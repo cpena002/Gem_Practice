@@ -1,7 +1,5 @@
 <h1>Welcome</h1>
 
-<p id="notice"><%= notice %></p>
-
 <h1>Apartments</h1>
 
 <table>
@@ -43,3 +41,4 @@
 <br>
 
 <%= link_to 'New Apartment', new_apartment_path %>
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete%>
