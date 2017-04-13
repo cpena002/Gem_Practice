@@ -14,7 +14,7 @@ RSpec.feature "Users", type: :feature do
         expect(page).to have_link ("Log In")
         expect(page).to have_link ("Sign Up")
       end
-      Then 'I should only be able to only be able to visit the index page' do
+      Then 'I should only be able to visit the index page' do
         visit '/apartments/new'
         expect(page).not_to have_current_path(new_apartment_path)
       end
