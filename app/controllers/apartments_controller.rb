@@ -2,7 +2,11 @@ class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   #for devise authentication.
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+
+  # for CanCanCan authorization methods
+  # load_and_authorize_resource   # add this line
+
   # GET /apartments
   # GET /apartments.json
   def index

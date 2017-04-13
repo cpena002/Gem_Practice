@@ -1,6 +1,6 @@
 <h1>Welcome</h1>
 
-<h1>Apartments</h1>
+<h1>Listings</h1>
 
 <table>
   <thead>
@@ -30,15 +30,24 @@
         <td><%= apartment.name %></td>
         <td><%= apartment.phone %></td>
         <td><%= apartment.hours %></td>
-        <td><%= link_to 'Show', apartment %></td>
-        <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
-        <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if !current_user.nil? %>
+          <td><%= link_to 'Show', apartment %></td>
+          <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
+          <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<!-- if user is not signed in, don't display these links -->
+<% if !current_user.nil? %>
+  <%= link_to 'New Apartment', new_apartment_path %>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete%>
+<% end %>
 
-<%= link_to 'New Apartment', new_apartment_path %>
-<%= link_to 'Sign out', destroy_user_session_path, method: :delete%>
+<%if current_user.nil? %>
+  <%= link_to "Log In", new_user_session_path %>
+  <%= link_to "Sign Up", new_user_registration_path %>
+<% end %>

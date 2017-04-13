@@ -11,6 +11,14 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <p>
+      <%= if !current_user.nil?
+            current_user.email + ' (' + current_user.roles.pluck(:name).join(",") +')'
+          end
+      %>
+    </p>
+
     <%= yield %>
   </body>
 </html>
