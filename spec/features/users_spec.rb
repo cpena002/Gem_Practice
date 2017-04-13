@@ -6,8 +6,6 @@ RSpec.feature "Users", type: :feature do
     Steps 'to visit landing page' do
       Given 'That I am on the landing page' do
         visit '/'
-      end
-      Then 'I should only be able to only see apartment listings' do
         expect(page).to have_content "Listings"
         expect(page).to have_content "Street1"
         expect(page).to have_content "Street2"
@@ -15,6 +13,10 @@ RSpec.feature "Users", type: :feature do
         expect(page).not_to have_link("Sign Out")
         expect(page).to have_link ("Log In")
         expect(page).to have_link ("Sign Up")
+      end
+      Then 'I should only be able to visit the index page' do
+        visit '/apartments/new'
+        expect(page).not_to have_current_path(new_apartment_path)
       end
     end
   end
